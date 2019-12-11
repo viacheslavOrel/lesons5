@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesons 4</title>
+</head>
+<body>
+	<script>
+		var triangle = "";
+		var inputNumber = prompt("Введите высоту триугольника");
+
+		while (true) {
+			if (inputNumber === null) break;
+
+			if (inputNumber.trim() === "") {
+				inputNumber = prompt("Пожалуйста, заполните поле или нажмите отмену");
+				continue;
+			}
+
+			if (isNaN(inputNumber)) {
+				inputNumber = prompt("Пожелуйста, заполните поле используя только цифры");
+				continue;
+			}
+
+			if (+inputNumber === 0) {
+				inputNumber = prompt("Недопустимый формат высоты. Введите значение больше нуля");
+				continue;
+			}
+
+			break;
+		}
+
+		if (inputNumber !== null) {
+			for (var i = 0; i < inputNumber; i++) {
+				for (var j = 0; j < i + 1; j++) {
+					triangle += "*";
+				}
+
+				triangle += ((i != inputNumber - 1) ? "\n" : "");
+			}
+
+			alert(triangle);
+		}
+
+	</script>
+</body>
+</html>
