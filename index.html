@@ -1,45 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Lesons 4</title>
+	<title>Lesons 5</title>
 </head>
 <body>
 	<script>
+		//First part
 		var triangle = "";
-		var inputNumber = prompt("Введите высоту триугольника");
+		var triangleHeight = GetTriangleHeight();
+		var triangleChar = GetTriangleSymbol();
 
-		while (true) {
-			if (inputNumber === null) break;
-
-			if (inputNumber.trim() === "") {
-				inputNumber = prompt("Пожалуйста, заполните поле или нажмите отмену");
-				continue;
-			}
-
-			if (isNaN(inputNumber)) {
-				inputNumber = prompt("Пожелуйста, заполните поле используя только цифры");
-				continue;
-			}
-
-			if (+inputNumber === 0) {
-				inputNumber = prompt("Недопустимый формат высоты. Введите значение больше нуля");
-				continue;
-			}
-
-			break;
+		if (CheckInputData(triangleHeight, triangleChar)) {
+			triangle = CreateTriangleString(triangleHeight, triangleChar);
+		} else {
+			triangle = "Вы не ввели корректные данные. Работа приложения будет завершена";
 		}
 
-		if (inputNumber !== null) {
-			for (var i = 0; i < inputNumber; i++) {
-				for (var j = 0; j < i + 1; j++) {
-					triangle += "*";
+		alert(triangle);
+
+		alert("Second part = " + f());
+
+
+		function GetTriangleHeight(){
+			var triangleHeight = prompt("Введите высоту триугольника");
+
+			while (true) {
+				if (triangleHeight === null) break;
+
+				if (triangleHeight.trim() === "") {
+					triangleHeight = prompt("Пожалуйста, заполните поле или нажмите отмена");
+					continue;
 				}
 
-				triangle += ((i != inputNumber - 1) ? "\n" : "");
+				if (isNaN(triangleHeight)) {
+					triangleHeight = prompt("Пожалуйста, заполните поле используя только цифры");
+					continue;
+				}
+
+				if (+triangleHeight < 1) {
+					triangleHeight = prompt("Недопустимый формат высоты. Введите значение больше нуля");
+					continue;
+				}
+
+				break;
 			}
 
-			alert(triangle);
+			return triangleHeight;
 		}
+
+		function GetTriangleSymbol(){
+			var triangleSymbol = prompt("Введите символ-заполнитель для треугольника")
+
+			while (true){
+				if (triangleSymbol === null) break;
+
+				if (triangleSymbol.trim() === "") {
+					triangleSymbol = prompt("Пожалуйста, введите один символ-заполнитель для создания треуголька");
+					continue;
+				}
+				if (triangleSymbol.length != 1) {
+					triangleSymbol = prompt("Неверный ввод. Введите только один символ-заполнитель для создания треугольника");
+					continue;
+				}
+
+				break;
+			}
+
+			return triangleSymbol;
+		}
+
+		function CheckInputData(triangleHeight, triangleChar) {
+			if (triangleHeight == null || triangleChar == null) return false;
+
+			return true;
+		}
+
+		function CreateTriangleString(triangleHeight, triangleChar) {
+			var triangleString = "";
+
+			for (var i = 0; i < triangleHeight; i++) {
+				for (var j = 0; j < i + 1; j++) {
+					triangleString += triangleChar;
+				}
+
+				triangleString += ((i != triangleHeight - 1) ? "\n" : "");
+			}
+
+			return triangleString;
+		}
+
+
+		//Second part
+		function f(a, b, c) {
+			if (a === undefined) {
+				a = 2;
+			}
+			if (b === undefined) {
+				b = 3;
+			}
+
+			if (c !== undefined && typeof c === typeof new function() {}) {
+				return c;
+			}
+
+			return sum(a, b);
+
+			function sum(a, b) {
+				return a + b;
+			}
+		}
+
+		
+
 
 	</script>
 </body>
