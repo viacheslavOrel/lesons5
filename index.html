@@ -18,7 +18,14 @@
 
 		alert(triangle);
 
-		alert("Second part = " + f());
+		/*var c = function () {
+			return (200 + 1);
+		}*/
+		var a = 10;
+		var b = 1000;
+		var c = 1;
+
+		alert("Second part = " + f(a, b, c));
 
 
 		function GetTriangleHeight(){
@@ -90,6 +97,9 @@
 		}
 
 
+		//Test c
+		
+
 		//Second part
 		function f(a, b, c) {
 			if (a === undefined) {
@@ -99,8 +109,8 @@
 				b = 3;
 			}
 
-			if (c !== undefined && typeof c === typeof new function() {}) {
-				return c;
+			if (c !== undefined) {
+				return typeof c == "function" ? c() : c;
 			}
 
 			return sum(a, b);
